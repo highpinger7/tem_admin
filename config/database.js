@@ -1,9 +1,18 @@
 const {createPool} = require("mysql");
 
 const pool = createPool({
-    port:5000,
     host:"localhost",
     user:"root",
     password:"",
-    database:"tem_db"
-})
+    database:"tem_db",
+    connectionLimit:10
+});
+
+// pool.query(`select * from registration`,(err,res,fields)=>{
+//     if(err) {
+//         return console.log(err)
+//     }
+//     return console.log(res)
+// })
+
+module.exports = pool
