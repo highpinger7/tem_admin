@@ -1,10 +1,14 @@
 require("dotenv").config();
+const cors = require('cors');
+
 const express = require("express");
 const app = express();
 const userRouter = require("./api/user/user.router");
 
 app.use(express.json());
-
+app.use(cors({
+  origin: 'http://localhost:4200'
+}));
 app.get("/admin", (req, res) => {
   res.send("Welcome to tem2 backend");
 });

@@ -5,6 +5,7 @@ module.exports = {
     const body = req.body;
     registerUser(body, (err, results) => {
       if (err) {
+        console.log(err)
         return res.status(500).json({
           success: 0,
           message: "DB connection error",

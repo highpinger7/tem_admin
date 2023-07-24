@@ -17,6 +17,7 @@ module.exports = {
       ],
       (error, results, field) => {
         if (error) {
+          console.log(error)
           return callback(error);
         }
         return callback(null, results);
@@ -48,7 +49,7 @@ module.exports = {
 
   updateUserById: (data, callback) => {
     pool.query(
-      `update registration set first_name=?,last_name=?,status=?,email=?,password=?,phone_number=?,is_admin=?,is_emp=? where id=?`,
+      `update registration set first_name=?,last_name=?,status=?,email=?,password=?,phone_number=?,is_admin=?,is_emp=?,address=?,city=?,pin=? where id=?`,
       [
         data.first_name,
         data.last_name,
@@ -59,6 +60,9 @@ module.exports = {
         data.is_admin,
         data.is_emp,
         data.id,
+        data.address,
+        data.city,
+        data.pin
       ],
       (error, results, field) => {
         if (error) {
